@@ -23,7 +23,6 @@ export default function Home() {
                     isLongPressed(!longPress),
                     setApp(index),
                   ])}
-                  // onClick={() => document.getElementById(index).remove()}
                 >
                   <App
                     props={app}
@@ -32,11 +31,7 @@ export default function Home() {
                     deleteModal={deleteModal}
                   />
                 </Buttons>
-                <BTN
-                  //
-                  onClick={() => setDeleteModal(true)}
-                  longPress={longPress}
-                >
+                <BTN onClick={() => setDeleteModal(true)} longPress={longPress}>
                   <div>—</div>
                 </BTN>
               </Parent>
@@ -108,7 +103,7 @@ const Container = styled.div`
   grid-template-columns: repeat(4, auto);
   grid-gap: 0px;
   grid-row-gap: 23px;
-  margin: 20px 0;
+  margin: 40px 0;
   > button {
     background: transparent;
     border: none;

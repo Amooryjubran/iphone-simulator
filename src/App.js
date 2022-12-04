@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import Header from "./component/Header";
 import Home from "./component/Home";
 
 function App() {
   return (
     <Wrapper>
+      <Header />
       <Home />
     </Wrapper>
   );
@@ -18,4 +20,6 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 400px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 `;
