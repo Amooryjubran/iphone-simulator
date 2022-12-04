@@ -203,6 +203,7 @@ const SliderS = styled(Slider)`
   }
   .slick-dots li button:before {
     color: whitesmoke;
+    line-height: 13px;
   }
   .slick-dots {
     position: fixed;

@@ -88,13 +88,14 @@ const Container = styled.div`
   grid-template-columns: repeat(4, auto);
   grid-gap: 10px;
   grid-row-gap: 23px;
-  position: fixed;
+  position: absolute;
   bottom: 10px;
   background: rgb(45, 8, 53, 0.5);
   padding: 15px 20px;
   border-radius: 30px;
   width: 100%;
-  max-width: 95%;
+  width: 94%;
+  max-width: 400px;
   > button {
     background: transparent;
     border: none;
