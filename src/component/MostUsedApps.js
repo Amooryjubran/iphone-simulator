@@ -1,46 +1,38 @@
-import styled from "styled-components";
-import BG from "../assets/wallpaper.jpeg";
-import { AppsList } from "../assets/data";
-import App from "./App";
-import useLongPress from "../hooks/useLongPress";
 import { useState } from "react";
+import styled from "styled-components";
+import { FavApps } from "../assets/data";
+import useLongPress from "../hooks/useLongPress";
+import App from "./App";
 import DeleteModal from "./DeleteModal";
 
-export default function Home() {
+export default function MostUsedApps() {
   const [longPress, isLongPressed] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [app, setApp] = useState(0);
   const onLongPress = useLongPress();
+  console.log(FavApps);
   return (
-    <>
-      <Wrapper>
-        <Container>
-          {AppsList.map((app, index) => {
-            return (
-              <Parent key={index} id={index}>
-                <Buttons
-                  {...onLongPress(() => [
-                    isLongPressed(!longPress),
-                    setApp(index),
-                  ])}
-                >
-                  <App
-                    props={app}
-                    longPress={longPress}
-                    setDeleteModal={setDeleteModal}
-                    deleteModal={deleteModal}
-                    showText={true}
-                  />
-                </Buttons>
-                <BTN onClick={() => setDeleteModal(true)} longPress={longPress}>
-                  <div>—</div>
-                </BTN>
-              </Parent>
-            );
-          })}
-        </Container>
-      </Wrapper>
-
+    <Container>
+      {FavApps.map((app, index) => {
+        return (
+          <Parent key={index} id={index}>
+            <Buttons
+              {...onLongPress(() => [isLongPressed(!longPress), setApp(index)])}
+            >
+              <App
+                showText={false}
+                props={app}
+                longPress={longPress}
+                setDeleteModal={setDeleteModal}
+                deleteModal={deleteModal}
+              />
+            </Buttons>
+            <BTN onClick={() => setDeleteModal(true)} longPress={longPress}>
+              <div>—</div>
+            </BTN>
+          </Parent>
+        );
+      })}
       {deleteModal && (
         <DeleteModal
           setDeleteModal={setDeleteModal}
@@ -49,7 +41,7 @@ export default function Home() {
           isLongPressed={isLongPressed}
         />
       )}
-    </>
+    </Container>
   );
 }
 const Buttons = styled.button`
@@ -90,21 +82,19 @@ const BTN = styled.button`
   display: ${(props) => (!props.longPress ? "none" : "block")};
   animation: Shake 0.5s infinite;
 `;
-const Wrapper = styled.div`
-  max-height: 844px;
-  height: 100%;
-  width: 100%;
-  max-width: 400px;
-  background-image: url(${BG});
-  background-size: 100% 100%;
-`;
 
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(4, auto);
-  grid-gap: 0px;
-  grid-row-gap: 15px;
-  margin: 40px 0;
+  grid-gap: 10px;
+  grid-row-gap: 23px;
+  position: fixed;
+  bottom: 10px;
+  background: rgb(45, 8, 53, 0.5);
+  padding: 15px 20px;
+  border-radius: 30px;
+  width: 100%;
+  max-width: 95%;
   > button {
     background: transparent;
     border: none;

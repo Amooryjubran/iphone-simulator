@@ -18,6 +18,11 @@ import Setting from "././apps-icons/settings.png";
 import Stocks from "././apps-icons/stocks.png";
 import Wallet from "././apps-icons/wallet.png";
 
+import Safari from "././apps-icons/safari.png";
+import Contact from "././apps-icons/contacts.png";
+import Messages from "././apps-icons/messages.png";
+import Spotify from "././apps-icons/spotify.png";
+
 export const AppsList = [
   { name: "FaceTime", img: FT },
   { name: "Calender", img: Calender },
@@ -38,4 +43,11 @@ export const AppsList = [
   { name: "Home", img: Home },
   { name: "Wallet", img: Wallet },
   { name: "Settings", img: Setting },
+];
+
+export const FavApps = [
+  { name: "Contact", img: Contact },
+  { name: "Safari", img: Safari },
+  { name: "Messages", img: Messages },
+  { name: "FaSpotifyceTime", img: Spotify },
 ];

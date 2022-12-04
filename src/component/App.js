@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export default function App(props) {
   const { name, img } = props.props;
-  const { longPress } = props;
+  const { longPress, showText } = props;
+
   return (
     <Container longPress={longPress}>
       <img src={img} alt="app" />
-      <span>{name}</span>
+      <span>{showText && name}</span>
     </Container>
   );
 }
