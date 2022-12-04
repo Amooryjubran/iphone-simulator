@@ -5,39 +5,56 @@ import App from "./App";
 import useLongPress from "../hooks/useLongPress";
 import { useState } from "react";
 import DeleteModal from "./DeleteModal";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 export default function Home() {
   const [longPress, isLongPressed] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [app, setApp] = useState(0);
   const onLongPress = useLongPress();
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    rows: 4,
+    variableWidth: true,
+  };
   return (
     <>
       <Wrapper>
         <Container>
-          {AppsList.map((app, index) => {
-            return (
-              <Parent key={index} id={index}>
-                <Buttons
-                  {...onLongPress(() => [
-                    isLongPressed(!longPress),
-                    setApp(index),
-                  ])}
-                >
-                  <App
-                    props={app}
+          <SliderS {...settings}>
+            {AppsList.map((app, index) => {
+              return (
+                <Parent key={index} id={index}>
+                  <Buttons
+                    {...onLongPress(() => [
+                      isLongPressed(!longPress),
+                      setApp(index),
+                    ])}
+                  >
+                    <App
+                      props={app}
+                      longPress={longPress}
+                      setDeleteModal={setDeleteModal}
+                      deleteModal={deleteModal}
+                      showText={true}
+                    />
+                  </Buttons>
+                  <BTN
+                    onClick={() => setDeleteModal(true)}
                     longPress={longPress}
-                    setDeleteModal={setDeleteModal}
-                    deleteModal={deleteModal}
-                    showText={true}
-                  />
-                </Buttons>
-                <BTN onClick={() => setDeleteModal(true)} longPress={longPress}>
-                  <div>—</div>
-                </BTN>
-              </Parent>
-            );
-          })}
+                  >
+                    <div>—</div>
+                  </BTN>
+                </Parent>
+              );
+            })}
+          </SliderS>
         </Container>
       </Wrapper>
 
@@ -74,10 +91,12 @@ const Parent = styled.div`
       transform: translate(0, 0) rotate(0deg);
     }
   }
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   position: relative;
+  /* width: 60% !important; */
+  margin: 20px 0;
 `;
 const BTN = styled.button`
   position: absolute;
@@ -100,14 +119,105 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(4, auto);
   grid-gap: 0px;
   grid-row-gap: 15px;
-  margin: 40px 0;
+  margin: 40px 0; */
   > button {
     background: transparent;
     border: none;
     outline: none;
+  }
+`;
+const SliderS = styled(Slider)`
+  .slick-arrow {
+    display: none !important;
+  }
+  &:hover {
+    .slick-arrow {
+      display: none !important;
+    }
+  }
+  .slick-slider {
+    margin: -30px 0 0;
+  }
+  .slick-slide {
+    z-index: 1;
+    margin: 30px 0;
+    position: relative;
+  }
+  .slick-list {
+    overflow: visible;
+  }
+  .slick-next:before,
+  .slick-prev:before {
+    font-size: 45px;
+  }
+  .slick-prev:before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    transform: rotate(225deg);
+    left: 10px;
+    top: ${(props) => (props.state ? "-13px" : "8px")};
+  }
+  .slick-next:before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    transform: rotate(45deg);
+    left: 6px;
+    top: ${(props) => (props.state ? "-13px" : "8px")};
+  }
+  .slick-prev {
+    z-index: 43242342342;
+  }
+  .slick-next {
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    border-radius: 50%;
+  }
+  .slick-prev {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    border-radius: 50%;
+  }
+  .slick-disabled {
+    opacity: 0% !important;
+  }
+  .slick-dots {
+    background: rgb(45, 8, 53, 0.5);
+    padding: 5px 10px;
+    border-radius: 30px;
+  }
+  .slick-dots li.slick-active button:before {
+    color: white;
+  }
+  .slick-dots li button:before {
+    color: whitesmoke;
+  }
+  .slick-dots {
+    position: fixed;
+    bottom: 124px;
+    width: auto;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .slick-dots li button {
+    width: 10px;
+    height: 10px;
+  }
+  .slick-dots li {
+    margin: 0;
   }
 `;

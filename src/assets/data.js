@@ -24,11 +24,6 @@ import Messages from "././apps-icons/messages.png";
 import Spotify from "././apps-icons/spotify.png";
 
 export const AppsList = [
-  { name: "FaceTime", img: FT },
-  { name: "Calender", img: Calender },
-  { name: "Photos", img: Photos },
-  { name: "Camera", img: Camera },
-  { name: "Mail", img: Mail },
   { name: "Clock", img: Clock },
   { name: "Weather", img: Weather },
   { name: "Reminders", img: Reminder },
@@ -43,6 +38,23 @@ export const AppsList = [
   { name: "Home", img: Home },
   { name: "Wallet", img: Wallet },
   { name: "Settings", img: Setting },
+  { name: "Mail", img: Mail },
+  { name: "FaceTime", img: FT },
+  { name: "FaceTime", img: FT },
+  { name: "Calender", img: Calender },
+  { name: "Camera", img: Camera },
+  { name: "Camera", img: Camera },
+  { name: "Camera", img: Camera },
+  { name: "FaceTime", img: FT },
+  { name: "FaceTime", img: FT },
+  { name: "FaceTime", img: FT },
+  { name: "FaceTime", img: FT },
+  { name: "FaceTime", img: FT },
+  { name: "FaceTime", img: FT },
+  { name: "Calender", img: Calender },
+  { name: "Photos", img: Photos },
+  { name: "Camera", img: Camera },
+  { name: "Mail", img: Mail },
 ];
 
 export const FavApps = [

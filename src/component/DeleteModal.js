@@ -11,7 +11,7 @@ export default function DeleteModal(props) {
       <div>
         <button
           onClick={() => [
-            document.getElementById(props?.app).remove(),
+            document.getElementById(props?.app).parentElement.remove(),
             props.setDeleteModal(false),
             props.isLongPressed(false),
           ]}
