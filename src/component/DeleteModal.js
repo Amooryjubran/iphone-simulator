@@ -2,9 +2,6 @@ import styled from "styled-components";
 import { AppsList } from "../assets/data";
 
 export default function DeleteModal(props) {
-  console.log(props);
-  console.log(AppsList[props?.app]);
-  console.log(props?.app);
   return (
     <Wrapper>
       <h1>Remove "{AppsList[props?.app].name}"?</h1>

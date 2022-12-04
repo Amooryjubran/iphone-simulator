@@ -3,7 +3,6 @@ import styled from "styled-components";
 export default function App(props) {
   const { name, img } = props.props;
   const { longPress } = props;
-  //   console.log(deleteModal);
   return (
     <Container longPress={longPress}>
       <img src={img} alt="app" />
