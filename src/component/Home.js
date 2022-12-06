@@ -12,6 +12,8 @@ import Slider from "react-slick";
 export default function Home() {
   const [longPress, isLongPressed] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [handeExpand, setHandleExpand] = useState(false);
+
   const [app, setApp] = useState(0);
   const onLongPress = useLongPress();
   const settings = {
@@ -22,6 +24,13 @@ export default function Home() {
     slidesToScroll: 4,
     rows: 4,
     variableWidth: true,
+  };
+  const hanldeExpandFunc = (e, index) => {
+    console.log(index);
+    e.target.querySelector("img").classList.add("active");
+    setTimeout(() => {
+      e.target.querySelector("img").classList.remove("active");
+    }, 1500);
   };
   return (
     <>
@@ -36,12 +45,15 @@ export default function Home() {
                       isLongPressed(!longPress),
                       setApp(index),
                     ])}
+                    onClick={(e) => hanldeExpandFunc(e, index)}
                   >
                     <App
                       props={app}
                       longPress={longPress}
                       setDeleteModal={setDeleteModal}
                       deleteModal={deleteModal}
+                      setHandleExpand={setHandleExpand}
+                      handeExpand={handeExpand}
                       showText={true}
                     />
                   </Buttons>

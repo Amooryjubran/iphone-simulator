@@ -3,7 +3,6 @@ import styled from "styled-components";
 export default function App(props) {
   const { name, img } = props.props;
   const { longPress, showText } = props;
-
   return (
     <Container longPress={longPress}>
       <img src={img} alt="app" />
@@ -30,6 +29,18 @@ const Container = styled.div`
       transform: translate(0, 0) rotate(0deg);
     }
   }
+  @keyframes Enlarge {
+    0% {
+      min-width: 80px;
+    }
+
+    50% {
+      min-width: 50vh;
+    }
+    100% {
+      min-width: 100vh;
+    }
+  }
   height: 100%;
   width: 100%;
   display: flex;
@@ -51,6 +62,12 @@ const Container = styled.div`
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+  }
+  > .active {
+    max-height: none;
+    min-width: 100vh;
+    margin-top: -51px;
+    animation: Enlarge 0.3s;
   }
   > span {
     color: white;
