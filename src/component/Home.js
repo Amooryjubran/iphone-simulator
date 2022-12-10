@@ -2,20 +2,26 @@ import styled from "styled-components";
 import BG from "../assets/wallpaper.jpeg";
 import { AppsList } from "../assets/data";
 import App from "./App";
+import Calculator from "./Calculator.js";
 import useLongPress from "../hooks/useLongPress";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import DeleteModal from "./DeleteModal";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import SwipeUpExit from "./SwipeUpExit";
 
 export default function Home() {
   const [longPress, isLongPressed] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [handeExpand, setHandleExpand] = useState(false);
-
   const [app, setApp] = useState(0);
+  const [realIndex, seatRealIndex] = useState(null);
+  const [openApp, setOpenApp] = useState(null);
+
   const onLongPress = useLongPress();
+
+  let componentsArray = ["", "", "", Calculator];
   const settings = {
     dots: true,
     infinite: true,
@@ -26,10 +32,11 @@ export default function Home() {
     variableWidth: true,
   };
   const hanldeExpandFunc = (e, index) => {
-    console.log(index);
     e.target.querySelector("img").classList.add("active");
     setTimeout(() => {
       e.target.querySelector("img").classList.remove("active");
+      setOpenApp(true);
+      seatRealIndex(index);
     }, 1500);
   };
   return (
@@ -69,7 +76,16 @@ export default function Home() {
           </SliderS>
         </Container>
       </Wrapper>
-
+      {openApp &&
+        componentsArray.map((Component, index) => {
+          if (index + 1 !== realIndex || !Component) return null;
+          return (
+            <Fragment key={index}>
+              <Component />
+              <SwipeUpExit openApp={openApp} setOpenApp={setOpenApp} />
+            </Fragment>
+          );
+        })}
       {deleteModal && (
         <DeleteModal
           setDeleteModal={setDeleteModal}

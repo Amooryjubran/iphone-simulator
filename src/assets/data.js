@@ -15,7 +15,7 @@ import News from "././apps-icons/news.png";
 import Notes from "././apps-icons/notes.png";
 import Podcast from "././apps-icons/podcasts.png";
 import Setting from "././apps-icons/settings.png";
-import Stocks from "././apps-icons/stocks.png";
+import Calculator from "././apps-icons/calculator.png";
 import Wallet from "././apps-icons/wallet.png";
 
 import Tiktok from "././apps-icons/tiktok.png";
@@ -43,7 +43,7 @@ export const AppsList = [
   { name: "Weather", img: Weather },
   { name: "Reminders", img: Reminder },
   { name: "Notes", img: Notes },
-  { name: "Stocks", img: Stocks },
+  { name: "Calculator", img: Calculator },
   { name: "News", img: News },
   { name: "Books", img: Books },
   { name: "App Store", img: AppStore },
