@@ -56,6 +56,7 @@ const Container = styled.div`
     min-height: 60px;
     width: 100%;
     max-width: 60px;
+    border-radius: 15px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;

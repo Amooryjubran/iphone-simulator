@@ -18,6 +18,21 @@ import Setting from "././apps-icons/settings.png";
 import Stocks from "././apps-icons/stocks.png";
 import Wallet from "././apps-icons/wallet.png";
 
+import Tiktok from "././apps-icons/tiktok.png";
+import Instagram from "././apps-icons/instagram.png";
+import Youtube from "././apps-icons/youtube.png";
+import Snpachat from "././apps-icons/snapchat.png";
+import Tinder from "././apps-icons/tinder.png";
+import Bumble from "././apps-icons/bumble.png";
+import Canva from "././apps-icons/canva.png";
+import Twitch from "././apps-icons/twitch.png";
+import Photoshop from "././apps-icons/photoshop.png";
+import Disney from "././apps-icons/disney.png";
+import roku from "././apps-icons/roku.png";
+import amazonprime from "././apps-icons/amazonprime.png";
+import googleplay from "././apps-icons/GooglePlay.png";
+import tumbler from "././apps-icons/tumbler.png";
+
 import Safari from "././apps-icons/safari.png";
 import Contact from "././apps-icons/contacts.png";
 import Messages from "././apps-icons/messages.png";
@@ -40,20 +55,21 @@ export const AppsList = [
   { name: "Settings", img: Setting },
   { name: "Mail", img: Mail },
   { name: "FaceTime", img: FT },
-  { name: "FaceTime", img: FT },
-  { name: "Calender", img: Calender },
-  { name: "Camera", img: Camera },
-  { name: "Camera", img: Camera },
-  { name: "Camera", img: Camera },
-  { name: "FaceTime", img: FT },
-  { name: "FaceTime", img: FT },
-  { name: "FaceTime", img: FT },
-  { name: "FaceTime", img: FT },
-  { name: "FaceTime", img: FT },
-  { name: "FaceTime", img: FT },
-  { name: "Calender", img: Calender },
-  { name: "Photos", img: Photos },
-  { name: "Camera", img: Camera },
+
+  { name: "TikTok", img: Tiktok },
+  { name: "Instagram", img: Instagram },
+  { name: "Youtube", img: Youtube },
+  { name: "Snpachat", img: Snpachat },
+  { name: "Tinder", img: Tinder },
+  { name: "Bumble", img: Bumble },
+  { name: "Canva", img: Canva },
+  { name: "Twitch", img: Twitch },
+  { name: "Photoshop", img: Photoshop },
+  { name: "Disney", img: Disney },
+  { name: "Roku", img: roku },
+  { name: "Amazon Prime", img: amazonprime },
+  { name: "Play", img: googleplay },
+  { name: "Tumbler", img: tumbler },
   { name: "Mail", img: Mail },
 ];
 
