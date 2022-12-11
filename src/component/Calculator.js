@@ -126,6 +126,14 @@ const Parent = styled.div`
   top: 0;
   left: 0;
   z-index: 999999;
+  > .css-nzinn5-MuiContainer-root {
+    max-width: 444px;
+    position: relative;
+    max-height: 844px;
+    height: 100%;
+    width: 100%;
+    max-width: 400px;
+  }
 `;
 const Result = styled.h1`
   color: white;
@@ -167,4 +175,10 @@ const Wrapper = styled.div`
   justify-content: flex-end;
   gap: 23px;
   padding: 0 0 30px;
+  height: 100vh;
+  /* position: relative; */
+  max-height: 844px;
+  height: 100vh;
+  /* width: 100%; */
+  max-width: 400px;
 `;

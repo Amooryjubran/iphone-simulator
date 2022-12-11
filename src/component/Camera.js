@@ -30,9 +30,10 @@ export default function Camera() {
           textAlign: "center",
           zindex: 8,
           right: 0,
-          height: "100vh",
-          width: "100vw",
+          height: "100%",
+          width: "inherit",
           objectFit: "fill",
+          maxHeight: "844px",
         }}
       />
       <Footer>
@@ -65,8 +66,8 @@ const Header = styled.div`
   align-items: center;
   padding: 40px 10px;
   background-color: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  width: 100vw;
+  position: absolute;
+  width: 100%;
   top: 0;
   z-index: 23;
   > svg {
@@ -92,11 +93,15 @@ const Top = styled.div`
   width: 100%;
 `;
 const Parent = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   z-index: 999999;
+  max-height: 844px;
+  height: 100%;
+  width: 100%;
+  max-width: 400px;
 `;
 const Footer = styled.div`
   display: flex;
@@ -104,8 +109,8 @@ const Footer = styled.div`
   align-items: center;
   padding: 40px 10px;
   background-color: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  width: 100vw;
+  position: absolute;
+  width: 100%;
   bottom: 0;
   z-index: 23;
   display: flex;

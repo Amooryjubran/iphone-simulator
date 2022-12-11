@@ -235,8 +235,8 @@ const SliderS = styled(Slider)`
     line-height: 13px;
   }
   .slick-dots {
-    position: fixed;
-    bottom: 124px;
+    position: absolute;
+    bottom: -224px;
     width: auto;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
