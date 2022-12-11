@@ -1,14 +1,33 @@
 import styled from "styled-components";
 
 export default function SwipeUpExit(props) {
-  const { setOpenApp } = props;
+  const { setOpenApp, lockScreen } = props;
   const handleCloseApp = () => {
     setOpenApp(false);
   };
-  return <Swipe onClick={() => handleCloseApp()}></Swipe>;
+  return (
+    <Swipe lockScreen={lockScreen} onClick={() => handleCloseApp()}></Swipe>
+  );
 }
 
 const Swipe = styled.button`
+  @keyframes Shake {
+    0% {
+      bottom: 10px;
+    }
+    25% {
+      bottom: 12px;
+    }
+    50% {
+      bottom: 14px;
+    }
+    75% {
+      bottom: 16px;
+    }
+    100% {
+      bottom: 18px;
+    }
+  }
   height: 5px;
   width: 100%;
   max-width: 40%;
@@ -21,4 +40,5 @@ const Swipe = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+  animation: ${(props) => (!props.lockScreen ? "none" : "Shake 1s infinite")}; ;
 `;

@@ -1,14 +1,23 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Header from "./component/Header";
 import Home from "./component/Home";
+import LockScreen from "./component/LockScreen";
 import MostUsedApps from "./component/MostUsedApps";
 
 function App() {
+  const [locked, isLocked] = useState(true);
   return (
     <Wrapper>
       <Header />
-      <Home />
-      <MostUsedApps />
+      {locked ? (
+        <LockScreen isLocked={isLocked} />
+      ) : (
+        <>
+          <Home />
+          <MostUsedApps />
+        </>
+      )}
     </Wrapper>
   );
 }
