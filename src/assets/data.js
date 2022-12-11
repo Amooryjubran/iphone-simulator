@@ -47,7 +47,7 @@ export const AppsList = [
   { name: "News", img: News },
   { name: "Books", img: Books },
   { name: "App Store", img: AppStore },
-  { name: "Podcats", img: Podcast },
+  { name: "Camera", img: Camera },
   { name: "TV", img: TV },
   { name: "Health", img: Health },
   { name: "Home", img: Home },

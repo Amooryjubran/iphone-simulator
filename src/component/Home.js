@@ -3,6 +3,7 @@ import BG from "../assets/wallpaper.jpeg";
 import { AppsList } from "../assets/data";
 import App from "./App";
 import Calculator from "./Calculator.js";
+import Camera from "./Camera.js";
 import useLongPress from "../hooks/useLongPress";
 import { Fragment, useState } from "react";
 import DeleteModal from "./DeleteModal";
@@ -21,7 +22,7 @@ export default function Home() {
 
   const onLongPress = useLongPress();
 
-  let componentsArray = ["", "", "", Calculator];
+  let componentsArray = ["", "", "", Calculator, "", "", "", Camera];
   const settings = {
     dots: true,
     infinite: true,
