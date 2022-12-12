@@ -5,15 +5,22 @@ import BoltIcon from "@mui/icons-material/Bolt";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-import CaptureIcon from "../assets/capture.png";
+import CaptureIcon from "../../assets/capture.png";
+import ExpandImage from "./ExpandImage";
 export default function Camera() {
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
+  const [handleExpand, setHandleExpand] = useState(false);
 
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
   }, [webcamRef, setImgSrc]);
+
+  const handleExpandImage = () => {
+    console.log("omar");
+    setHandleExpand(true);
+  };
   return (
     <Parent>
       <Header>
@@ -46,7 +53,9 @@ export default function Camera() {
         </Top>
         <Buttons>
           <ImageReview>
-            <button>{imgSrc && <img src={imgSrc} alt="camera" />}</button>
+            <button onClick={() => imgSrc && handleExpandImage()}>
+              {imgSrc && <img src={imgSrc} alt="camera" />}
+            </button>
           </ImageReview>
           <Capture onClick={capture}>
             <img src={CaptureIcon} alt="capture" />
@@ -56,6 +65,9 @@ export default function Camera() {
           </Repeat>
         </Buttons>
       </Footer>
+      {handleExpand && (
+        <ExpandImage imgSrc={imgSrc} setHandleExpand={setHandleExpand} />
+      )}
     </Parent>
   );
 }

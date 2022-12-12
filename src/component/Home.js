@@ -3,7 +3,7 @@ import BG from "../assets/wallpaper.jpeg";
 import { AppsList } from "../assets/data";
 import App from "./App";
 import Calculator from "./Calculator.js";
-import Camera from "./Camera.js";
+import Camera from "./Camera/Camera.js";
 import useLongPress from "../hooks/useLongPress";
 import { Fragment, useState } from "react";
 import DeleteModal from "./DeleteModal";
