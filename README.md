@@ -8,7 +8,12 @@
 
 A small project that I have been working on to build an Iphone clone on the web using React Js
 
-## Screenshots
+## As of right now The only apps that are working are:
+
+- The Camera App
+- The Calculator App
+
+## Screenshots:
 
 <img src="./src/assets/screenshot/1.png" width="200" />
 <img src="./src/assets/screenshot/2.png" width="200" />
@@ -17,8 +22,3 @@ A small project that I have been working on to build an Iphone clone on the web 
 <img src="./src/assets/screenshot/5.png" width="200" />
 <img src="./src/assets/screenshot/6.png" width="200" />
 <img src="./src/assets/screenshot/7.png" width="200" />
-## As of right now The only apps that are working are:
-
-- The Camera App
-
-- The Calculator App
