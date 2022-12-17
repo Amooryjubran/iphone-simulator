@@ -18,7 +18,6 @@ export default function Camera() {
   }, [webcamRef, setImgSrc]);
 
   const handleExpandImage = () => {
-    console.log("omar");
     setHandleExpand(true);
   };
   return (

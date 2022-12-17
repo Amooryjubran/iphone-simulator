@@ -10,7 +10,6 @@ export default function MostUsedApps() {
   const [deleteModal, setDeleteModal] = useState(false);
   const [app, setApp] = useState(0);
   const onLongPress = useLongPress();
-  console.log(FavApps);
   return (
     <Container>
       {FavApps.map((app, index) => {

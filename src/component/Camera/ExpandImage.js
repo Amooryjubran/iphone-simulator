@@ -7,7 +7,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 export default function ExpandImage(props) {
-  console.log(props);
   return (
     <Parent>
       <Header>
