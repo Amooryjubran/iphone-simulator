@@ -31,14 +31,21 @@ const Container = styled.div`
   }
   @keyframes Enlarge {
     0% {
-      min-width: 80px;
+      /* min-width: 80px; */
+      filter: brightness(0%);
+      height: 25vh;
     }
 
     50% {
-      min-width: 50vh;
+      /* min-width: 50vh; */
+      filter: brightness(0%);
+      height: 50vh;
     }
     100% {
-      min-width: 100vh;
+      /* min-width: 100vh; */
+      filter: brightness(0%);
+      z-index: 99999999;
+      height: 75vh;
     }
   }
   height: 100%;
@@ -68,7 +75,15 @@ const Container = styled.div`
     max-height: none;
     min-width: 100vh;
     margin-top: -51px;
-    animation: Enlarge 0.3s;
+    animation: Enlarge 0.1s;
+    filter: brightness(0%);
+    position: fixed;
+    left: 0;
+    max-width: 100%;
+    min-width: 0;
+    top: 0;
+    z-index: 3323232323232;
+    height: 100vh;
   }
   > span {
     color: white;

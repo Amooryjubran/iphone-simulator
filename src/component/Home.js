@@ -34,11 +34,14 @@ export default function Home() {
   };
   const hanldeExpandFunc = (e, index) => {
     e.target.querySelector("img").classList.add("active");
+    document.querySelector(".slick-track").style.transform = "none";
     setTimeout(() => {
-      e.target.querySelector("img").classList.remove("active");
       setOpenApp(true);
       seatRealIndex(index);
-    }, 1500);
+      e.target.querySelector("img").classList.remove("active");
+      document.querySelector(".slick-track").style.transform =
+        "translate3d(-400px, 0px, 0px)";
+    }, 500);
   };
   return (
     <>
@@ -53,7 +56,9 @@ export default function Home() {
                       isLongPressed(!longPress),
                       setApp(index),
                     ])}
-                    onClick={(e) => hanldeExpandFunc(e, index)}
+                    onClick={(e) => {
+                      componentsArray[index - 1] && hanldeExpandFunc(e, index);
+                    }}
                   >
                     <App
                       props={app}
