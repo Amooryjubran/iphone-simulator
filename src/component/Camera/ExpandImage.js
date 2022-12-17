@@ -1,19 +1,25 @@
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import styled from "styled-components";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import IosShareIcon from "@mui/icons-material/IosShare";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import Trash from "../../assets/trash.png";
+import Info from "../../assets/i.png";
+import Heart from "../../assets/heart.png";
 export default function ExpandImage(props) {
+  const current = new Date();
+  const time = current.toLocaleTimeString("en-US");
+  const withoutFirstAndLast = time.slice(3, -2);
+
   return (
     <Parent>
       <Header>
         <button onClick={() => props.setHandleExpand(false)}>
           <ChevronLeftIcon />
         </button>
-        <KeyboardArrowUpIcon />
+        <div>
+          <span>Today</span>
+          <span>{withoutFirstAndLast + time.slice(-2)}</span>
+        </div>
         <RadioButtonCheckedIcon />
       </Header>
       <IMG>
@@ -21,10 +27,10 @@ export default function ExpandImage(props) {
       </IMG>
       <Footer>
         <IosShareIcon />
-        <FavoriteIcon />
-        <HelpOutlineIcon />
+        <img src={Heart} alt="Heart" />
+        <img src={Info} alt="Info" />
         <span>Edit</span>
-        <DeleteForeverIcon />
+        <img src={Trash} alt="delete" />
       </Footer>
     </Parent>
   );
@@ -33,7 +39,7 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 10px;
+  padding: 20px 10px;
   background-color: #141413;
   position: absolute;
   width: 100%;
@@ -47,9 +53,16 @@ const Header = styled.div`
   }
   > svg {
     color: white;
-    /* border: 1px solid white; */
-    /* border-radius: 50%;/ */
-    /* display: flex; */
+  }
+  > div {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    gap: 5px;
+  }
+  > div > span:nth-child(2) {
+    font-size: 14px;
   }
 `;
 
@@ -75,7 +88,7 @@ const Footer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 10px;
+  padding: 30px 10px;
   background-color: #141413;
   position: absolute;
   width: 100%;
@@ -83,9 +96,14 @@ const Footer = styled.div`
   z-index: 23;
   display: flex;
   > svg {
-    color: #0c84ff;
+    color: #5298e2;
   }
   > span {
-    color: #0c84ff;
+    color: #5298e2;
+  }
+  > img {
+    height: 23.9px;
+    width: 23.9px;
+    object-fit: contain;
   }
 `;

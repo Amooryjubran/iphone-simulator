@@ -11,15 +11,19 @@ export default function Camera() {
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
   const [handleExpand, setHandleExpand] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
   }, [webcamRef, setImgSrc]);
-
+  setTimeout(() => {
+    setLoading(false);
+  }, 1000);
   const handleExpandImage = () => {
     setHandleExpand(true);
   };
+  console.log(loading);
   return (
     <Parent>
       <Header>
@@ -27,21 +31,27 @@ export default function Camera() {
         <KeyboardArrowUpIcon />
         <RadioButtonCheckedIcon />
       </Header>
-      <Webcam
-        audio={false}
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-        style={{
-          position: "absolute",
-          textAlign: "center",
-          zindex: 8,
-          right: 0,
-          height: "100%",
-          width: "inherit",
-          objectFit: "fill",
-          maxHeight: "844px",
-        }}
-      />
+      {loading ? (
+        <Loader>Loading...</Loader>
+      ) : (
+        <Webcam
+          audio={false}
+          ref={webcamRef}
+          screenshotFormat="image/jpeg"
+          style={{
+            position: "absolute",
+            textAlign: "center",
+            zindex: 8,
+            right: 0,
+            height: "100%",
+            width: "inherit",
+            objectFit: "fill",
+            maxHeight: "844px",
+            opacity: loading ? 0 : 1,
+          }}
+        />
+      )}
+
       <Footer>
         <Top>
           <span>CENEMATIC</span>
@@ -87,6 +97,17 @@ const Header = styled.div`
     border-radius: 50%;
     display: flex;
   }
+`;
+const Loader = styled.div`
+  position: absolute;
+  text-align: center;
+  z-index: 8;
+  right: 0;
+  height: 100%;
+  width: inherit;
+  object-fit: fill;
+  max-height: 844px;
+  background-color: black;
 `;
 const Buttons = styled.div`
   display: flex;
