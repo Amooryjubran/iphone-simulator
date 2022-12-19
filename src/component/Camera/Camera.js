@@ -19,11 +19,10 @@ export default function Camera() {
   }, [webcamRef, setImgSrc]);
   setTimeout(() => {
     setLoading(false);
-  }, 1000);
+  }, 1500);
   const handleExpandImage = () => {
     setHandleExpand(true);
   };
-  console.log(loading);
   return (
     <Parent>
       <Header>
@@ -31,27 +30,24 @@ export default function Camera() {
         <KeyboardArrowUpIcon />
         <RadioButtonCheckedIcon />
       </Header>
-      {loading ? (
-        <Loader>Loading...</Loader>
-      ) : (
-        <Webcam
-          audio={false}
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          style={{
-            position: "absolute",
-            textAlign: "center",
-            zindex: 8,
-            right: 0,
-            height: "100%",
-            width: "inherit",
-            objectFit: "fill",
-            maxHeight: "844px",
-            opacity: loading ? 0 : 1,
-          }}
-        />
-      )}
-
+      {loading ? <Loader>Loading...</Loader> : null}
+      <Webcam
+        audio={false}
+        ref={webcamRef}
+        screenshotFormat="image/jpeg"
+        mirrored={true}
+        style={{
+          position: "absolute",
+          textAlign: "center",
+          zindex: 8,
+          right: 0,
+          height: "100%",
+          width: "inherit",
+          objectFit: "cover",
+          maxHeight: "844px",
+          opacity: loading ? 0 : 1,
+        }}
+      />
       <Footer>
         <Top>
           <span>CENEMATIC</span>

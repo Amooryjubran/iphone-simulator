@@ -1,58 +1,46 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Lock from "../assets/lock.png";
 import BG from "../assets/wallpaper.jpeg";
-import FlashlightOnIcon from "@mui/icons-material/FlashlightOn";
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
+
 import SwipeUpExit from "./SwipeUpExit";
+import Passcode from "./Passcode";
+import PassCodeButton from "./PassCodeButton";
 export default function LockScreen(props) {
-  const [date, setDate] = useState("");
-
-  useEffect(() => {
-    let options = {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
-    };
-    var timer = setInterval(
-      () => [setDate(new Date().toLocaleTimeString("en-us", options))],
-      1000
-    );
-    return function cleanup() {
-      clearInterval(timer);
-    };
-  }, [date]);
-  if (!date) return;
-  const { isLocked } = props;
-
-  const day = date.split(",")[0];
-  const todayDaye = date.split(",")[1];
-  const time = date.split(",")[2];
-  const fixedTime = time.substr(time.length - 8);
+  const [passcode, setPasscode] = useState(true);
+  const [pass, setPass] = useState([1, 1, 1, 2, 2, 2]);
+  if (passcode)
+    return <Passcode passcode={passcode} setPasscode={setPasscode} />;
 
   return (
     <Wrapper>
       <Container>
         <img src={Lock} alt="Lock" />
-        <span>
-          {day}, {todayDaye}
-        </span>
-        <h1>{fixedTime.substring(0, fixedTime.length - 3)}</h1>
+        <Parent>
+          <span>Enter Passcode</span>
+          <PassWordContainer>
+            {pass.map((pass) => {
+              console.log(pass);
+              return <Circle></Circle>;
+            })}
+          </PassWordContainer>
+        </Parent>
+        <PasswordNumbers>
+          <PassCodeButton num="1" />
+          <PassCodeButton num="2" A="A" B="B" C="C" />
+          <PassCodeButton num="3" A="D" B="E" C="F" />
+          <PassCodeButton num="4" A="G" B="H" C="I" />
+          <PassCodeButton num="5" A="J" B="K" C="L" />
+          <PassCodeButton num="6" A="M" B="N" C="O" />
+          <PassCodeButton num="7" A="P" B="Q" C="R" D="S" />
+          <PassCodeButton num="8" A="T" B="U" C="V" />
+          <PassCodeButton num="9" A="W" B="C" C="Y" D="Z" />
+          <div></div>
+          <PassCodeButton num="0" />
+          <div></div>
+        </PasswordNumbers>
       </Container>
-      <Footer>
-        <div>
-          <FlashlightOnIcon />
-        </div>
-        <div>
-          <CameraAltIcon />
-        </div>
-      </Footer>
-      <SwipeUpExit setOpenApp={isLocked} lockScreen={true} />
+      <SwipeUpExit setOpenApp={props.isLocked} lockScreen={true} />
     </Wrapper>
   );
 }
@@ -69,11 +57,25 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+const Parent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 40px 0 0;
+
+  > span {
+    font-size: 20px;
+    color: white;
+  }
+`;
 const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
 
   > span {
     color: #fff8ff;
@@ -90,20 +92,27 @@ const Container = styled.div`
     filter: brightness(0) invert(1);
   }
 `;
-const Footer = styled.div`
+const PassWordContainer = styled.div`
   display: flex;
-  justify-content: space-around;
-  width: 100%;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  gap: 20px;
+`;
+const Circle = styled.div`
+  padding: 7px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 50%;
+`;
 
-  > div {
-    background: #342f29;
-    padding: 15px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  > div > svg {
-    color: white;
-  }
+const PasswordNumbers = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  max-width: 75%;
+  width: 100%;
+  justify-items: center;
+  row-gap: 20px;
+  margin: 40px 0;
 `;
