@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import Lock from "../assets/lock.png";
 import BG from "../assets/wallpaper.jpeg";
@@ -9,8 +9,16 @@ import PassCodeButton from "./PassCodeButton";
 export default function LockScreen(props) {
   const [passcode, setPasscode] = useState(true);
   const [pass, setPass] = useState([1, 1, 1, 2, 2, 2]);
+  const [userPass, setUerPass] = useState([]);
+  const inputRef = useRef(null);
+
   if (passcode)
     return <Passcode passcode={passcode} setPasscode={setPasscode} />;
+  let result = userPass.map((i) => Number(i));
+  if (pass.toString() === result.toString())
+    setTimeout(() => {
+      inputRef.current?.click();
+    }, 500);
 
   return (
     <Wrapper>
@@ -19,28 +27,91 @@ export default function LockScreen(props) {
         <Parent>
           <span>Enter Passcode</span>
           <PassWordContainer>
-            {pass.map((pass) => {
-              console.log(pass);
-              return <Circle></Circle>;
+            {pass.map((pass, index) => {
+              return (
+                <Circle
+                  userPass={userPass.length}
+                  key={index}
+                  id="circle"
+                ></Circle>
+              );
             })}
           </PassWordContainer>
         </Parent>
         <PasswordNumbers>
-          <PassCodeButton num="1" />
-          <PassCodeButton num="2" A="A" B="B" C="C" />
-          <PassCodeButton num="3" A="D" B="E" C="F" />
-          <PassCodeButton num="4" A="G" B="H" C="I" />
-          <PassCodeButton num="5" A="J" B="K" C="L" />
-          <PassCodeButton num="6" A="M" B="N" C="O" />
-          <PassCodeButton num="7" A="P" B="Q" C="R" D="S" />
-          <PassCodeButton num="8" A="T" B="U" C="V" />
-          <PassCodeButton num="9" A="W" B="C" C="Y" D="Z" />
+          <PassCodeButton num="1" userPass={userPass} setUerPass={setUerPass} />
+          <PassCodeButton
+            num="2"
+            A="A"
+            B="B"
+            C="C"
+            userPass={userPass}
+            setUerPass={setUerPass}
+          />
+          <PassCodeButton
+            num="3"
+            A="D"
+            B="E"
+            C="F"
+            userPass={userPass}
+            setUerPass={setUerPass}
+          />
+          <PassCodeButton
+            num="4"
+            A="G"
+            B="H"
+            C="I"
+            userPass={userPass}
+            setUerPass={setUerPass}
+          />
+          <PassCodeButton
+            num="5"
+            A="J"
+            B="K"
+            C="L"
+            userPass={userPass}
+            setUerPass={setUerPass}
+          />
+          <PassCodeButton
+            num="6"
+            A="M"
+            B="N"
+            C="O"
+            userPass={userPass}
+            setUerPass={setUerPass}
+          />
+          <PassCodeButton
+            num="7"
+            A="P"
+            B="Q"
+            C="R"
+            D="S"
+            userPass={userPass}
+            setUerPass={setUerPass}
+          />
+          <PassCodeButton
+            num="8"
+            A="T"
+            B="U"
+            C="V"
+            userPass={userPass}
+            setUerPass={setUerPass}
+          />
+          <PassCodeButton
+            num="9"
+            A="W"
+            B="C"
+            C="Y"
+            D="Z"
+            userPass={userPass}
+            setUerPass={setUerPass}
+          />
           <div></div>
-          <PassCodeButton num="0" />
+          <PassCodeButton num="0" userPass={userPass} setUerPass={setUerPass} />
           <div></div>
         </PasswordNumbers>
       </Container>
-      <SwipeUpExit setOpenApp={props.isLocked} lockScreen={true} />
+      <SwipeUpExit setOpenApp={props.isLocked} innerRef={inputRef} />
     </Wrapper>
   );
 }
@@ -102,7 +173,7 @@ const PassWordContainer = styled.div`
 `;
 const Circle = styled.div`
   padding: 7px;
-  background-color: transparent;
+  background-color: ${(props) => (!props.longPress ? "transparent" : "white")};
   border: 1px solid white;
   border-radius: 50%;
 `;

@@ -28,7 +28,6 @@ export default function Passcode(props) {
     };
   }, [date]);
   if (!date) return;
-  console.log(props);
   const day = date.split(",")[0];
   const todayDaye = date.split(",")[1];
   const time = date.split(",")[2];

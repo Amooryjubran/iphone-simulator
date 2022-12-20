@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 export default function SwipeUpExit(props) {
-  const { setOpenApp, lockScreen } = props;
+  const { setOpenApp, lockScreen, innerRef } = props;
   const handleCloseApp = () => {
     setOpenApp(false);
   };
   return (
-    <Swipe lockScreen={lockScreen} onClick={() => handleCloseApp()}></Swipe>
+    <Swipe
+      lockScreen={lockScreen}
+      onClick={() => handleCloseApp()}
+      ref={innerRef}
+    ></Swipe>
   );
 }
 

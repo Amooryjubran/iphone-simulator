@@ -1,9 +1,29 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 
 export default function PassCodeButton(props) {
-  const { num, A, B, C, D } = props;
+  const { num, A, B, C, D, userPass, setUerPass } = props;
+
+  useEffect(() => {
+    setUerPass(userPass);
+  }, [userPass, setUerPass]);
+
   return (
-    <BUTTON>
+    <BUTTON
+      onClick={(e) => {
+        e.preventDefault();
+        const circles = document.querySelectorAll("#circle");
+        if (userPass.length >= 6) {
+          setUerPass([]);
+          circles.forEach((btn) => {
+            btn.style.background = "transparent";
+          });
+          return;
+        }
+        circles[userPass.length].style.background = "white";
+        setUerPass([...userPass, ...num]);
+      }}
+    >
       <div>
         <span>{num}</span>
         <div>
@@ -22,6 +42,7 @@ const BUTTON = styled.button`
   border-radius: 50%;
   height: 70px;
   width: 70px;
+  cursor: pointer;
   > div > span {
     color: white;
     font-size: 26px;
