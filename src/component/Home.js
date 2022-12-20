@@ -106,6 +106,7 @@ export default function Home() {
 const Buttons = styled.button`
   background: transparent;
   border: none;
+  cursor: pointer;
 `;
 const Parent = styled.div`
   @keyframes Shake {

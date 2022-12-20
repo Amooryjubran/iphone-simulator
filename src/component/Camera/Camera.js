@@ -12,7 +12,6 @@ export default function Camera() {
   const [imgSrc, setImgSrc] = useState(null);
   const [handleExpand, setHandleExpand] = useState(false);
   const [loading, setLoading] = useState(true);
-
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
@@ -71,7 +70,11 @@ export default function Camera() {
         </Buttons>
       </Footer>
       {handleExpand && (
-        <ExpandImage imgSrc={imgSrc} setHandleExpand={setHandleExpand} />
+        <ExpandImage
+          imgSrc={imgSrc}
+          setHandleExpand={setHandleExpand}
+          setImgSrc={setImgSrc}
+        />
       )}
     </Parent>
   );
