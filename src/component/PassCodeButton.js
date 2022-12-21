@@ -44,8 +44,8 @@ const BUTTON = styled.button`
   background-color: rgba(102, 102, 102, 0.5);
   border: none;
   border-radius: 50%;
-  height: 85px;
-  width: 85px;
+  height: 80px;
+  width: 80px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 
