@@ -151,7 +151,7 @@ const Parent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   margin: 40px 0 0;
 
   > span {
@@ -218,7 +218,7 @@ const Circle = styled.div`
 const PasswordNumbers = styled.div`
   display: grid;
   grid-template-columns: repeat(3, auto);
-  max-width: 75%;
+  max-width: 80%;
   width: 100%;
   justify-items: center;
   row-gap: 20px;

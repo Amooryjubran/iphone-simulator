@@ -41,17 +41,17 @@ export default function PassCodeButton(props) {
   );
 }
 const BUTTON = styled.button`
-  background-color: #363128;
+  background-color: rgba(102, 102, 102, 0.5);
   border: none;
   border-radius: 50%;
-  height: 80px;
-  width: 80px;
+  height: 85px;
+  width: 85px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 
   > div > span {
     color: white;
-    font-size: 26px;
+    font-size: 34px;
   }
   > div > div {
     display: flex;
