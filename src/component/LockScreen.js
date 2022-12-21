@@ -8,10 +8,10 @@ import Passcode from "./Passcode";
 import PassCodeButton from "./PassCodeButton";
 export default function LockScreen(props) {
   const [passcode, setPasscode] = useState(true);
-  const [pass, setPass] = useState([1, 1, 1, 2, 2, 2]);
+  const pass = [1, 1, 1, 2, 2, 2];
   const [userPass, setUerPass] = useState([]);
   const inputRef = useRef(null);
-
+  const [shakeAnimation, setShakeAnimation] = useState(false);
   if (passcode)
     return <Passcode passcode={passcode} setPasscode={setPasscode} />;
   let result = userPass.map((i) => Number(i));
@@ -26,7 +26,7 @@ export default function LockScreen(props) {
         <img src={Lock} alt="Lock" />
         <Parent>
           <span>Enter Passcode</span>
-          <PassWordContainer>
+          <PassWordContainer shakeAnimation={shakeAnimation}>
             {pass.map((pass, index) => {
               return (
                 <Circle
@@ -39,7 +39,12 @@ export default function LockScreen(props) {
           </PassWordContainer>
         </Parent>
         <PasswordNumbers>
-          <PassCodeButton num="1" userPass={userPass} setUerPass={setUerPass} />
+          <PassCodeButton
+            num="1"
+            userPass={userPass}
+            setUerPass={setUerPass}
+            setShakeAnimation={setShakeAnimation}
+          />
           <PassCodeButton
             num="2"
             A="A"
@@ -47,6 +52,7 @@ export default function LockScreen(props) {
             C="C"
             userPass={userPass}
             setUerPass={setUerPass}
+            setShakeAnimation={setShakeAnimation}
           />
           <PassCodeButton
             num="3"
@@ -55,6 +61,7 @@ export default function LockScreen(props) {
             C="F"
             userPass={userPass}
             setUerPass={setUerPass}
+            setShakeAnimation={setShakeAnimation}
           />
           <PassCodeButton
             num="4"
@@ -63,6 +70,7 @@ export default function LockScreen(props) {
             C="I"
             userPass={userPass}
             setUerPass={setUerPass}
+            setShakeAnimation={setShakeAnimation}
           />
           <PassCodeButton
             num="5"
@@ -71,6 +79,7 @@ export default function LockScreen(props) {
             C="L"
             userPass={userPass}
             setUerPass={setUerPass}
+            setShakeAnimation={setShakeAnimation}
           />
           <PassCodeButton
             num="6"
@@ -79,6 +88,7 @@ export default function LockScreen(props) {
             C="O"
             userPass={userPass}
             setUerPass={setUerPass}
+            setShakeAnimation={setShakeAnimation}
           />
           <PassCodeButton
             num="7"
@@ -88,6 +98,7 @@ export default function LockScreen(props) {
             D="S"
             userPass={userPass}
             setUerPass={setUerPass}
+            setShakeAnimation={setShakeAnimation}
           />
           <PassCodeButton
             num="8"
@@ -96,6 +107,7 @@ export default function LockScreen(props) {
             C="V"
             userPass={userPass}
             setUerPass={setUerPass}
+            setShakeAnimation={setShakeAnimation}
           />
           <PassCodeButton
             num="9"
@@ -105,9 +117,15 @@ export default function LockScreen(props) {
             D="Z"
             userPass={userPass}
             setUerPass={setUerPass}
+            setShakeAnimation={setShakeAnimation}
           />
           <div></div>
-          <PassCodeButton num="0" userPass={userPass} setUerPass={setUerPass} />
+          <PassCodeButton
+            num="0"
+            userPass={userPass}
+            setUerPass={setUerPass}
+            setShakeAnimation={setShakeAnimation}
+          />
           <div></div>
         </PasswordNumbers>
       </Container>
@@ -164,12 +182,31 @@ const Container = styled.div`
   }
 `;
 const PassWordContainer = styled.div`
+  @keyframes shaking {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(5px);
+    }
+    50% {
+      transform: translateX(-5px);
+    }
+    75% {
+      transform: translateX(5px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
   display: flex;
   align-content: center;
   align-items: center;
   justify-content: center;
   gap: 10px;
   gap: 20px;
+  animation: ${(props) =>
+    props.shakeAnimation ? "shaking 0.25s infinite" : "none"};
 `;
 const Circle = styled.div`
   padding: 7px;
@@ -185,5 +222,5 @@ const PasswordNumbers = styled.div`
   width: 100%;
   justify-items: center;
   row-gap: 20px;
-  margin: 40px 0;
+  margin: 70px 0;
 `;

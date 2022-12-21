@@ -103,7 +103,7 @@ export default function Calculator() {
               onClick={inputNum}
               value={0}
               style={{
-                width: "150px",
+                width: "158px",
                 textAlign: "initial",
                 padding: "0 34px",
               }}
@@ -151,6 +151,7 @@ const BtnsContainer = styled.div`
     border: none;
     border-radius: 2em;
     margin: 0.3em;
+    -webkit-tap-highlight-color: transparent;
   }
   > button:hover {
     cursor: pointer;
