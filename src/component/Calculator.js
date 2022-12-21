@@ -135,12 +135,12 @@ const Parent = styled.div`
     max-width: 400px;
   }
 `;
-const Result = styled.h1`
+const Result = styled.span`
   color: white;
   display: flex;
   justify-content: flex-end;
-  margin-right: 1em;
-  font-size: 3.5em;
+  margin-right: 0.39em;
+  font-size: 6em;
 `;
 const BtnsContainer = styled.div`
   text-align: center;
@@ -174,12 +174,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 23px;
-  padding: 0 0 30px;
-  height: 100vh;
-  /* position: relative; */
+  gap: 20px;
+  padding: 0 0 60px;
   max-height: 844px;
   height: 100vh;
-  /* width: 100%; */
   max-width: 400px;
 `;
