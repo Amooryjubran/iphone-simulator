@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   background: transparent;
-  position: fixed;
+  position: absolute;
   top: 5px;
   padding: 0 20px;
   color: white;
